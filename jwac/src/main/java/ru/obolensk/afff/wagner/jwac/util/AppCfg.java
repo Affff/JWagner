@@ -8,6 +8,7 @@ public class AppCfg {
 
 	private static String programName;
 	private static String programVersion;
+	private static String fullProgramVersion;
 
 	static {
 		Properties props = new Properties();
@@ -16,6 +17,7 @@ public class AppCfg {
 			props.load(inStream);
 			programName = props.getProperty("name");
 			programVersion = props.getProperty("version");
+			fullProgramVersion = programName + " v" + programVersion;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -33,5 +35,9 @@ public class AppCfg {
 
 	public static String getProgramVersion() {
 		return programVersion;
+	}
+
+	public static String getFullProgramVersion() {
+		return fullProgramVersion;
 	}
 }
