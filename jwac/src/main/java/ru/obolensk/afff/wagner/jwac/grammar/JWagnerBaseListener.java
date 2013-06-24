@@ -9,6 +9,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.ErrorNode;
 
 public class JWagnerBaseListener implements JWagnerListener {
+	@Override public void enterCommand(JWagnerParser.CommandContext ctx) { }
+	@Override public void exitCommand(JWagnerParser.CommandContext ctx) { }
+
 	@Override public void enterMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
 	@Override public void exitMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
 

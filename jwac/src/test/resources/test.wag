@@ -1,5 +1,3 @@
-music test {
-	play 10 1;
-	play 20 1;
-	play 30 1;
+melody test {
+	play 10 1 1;
 }
