@@ -9,14 +9,22 @@ melodyDeclaration // melody block
 ;
 
 melodyBody //melody body
-	: playNote
+	: '{'
+	 command
+	 //more commands here
+	 '}' 
 ;
 
-//Wagner commands
+command // generic command block
+ 	: ((playNote)? ';')*
+;
+
 playNote //playing single note command
  : 'play' INT INT INT
 ;
 
-ID : [a-zA-Z0-9]+ ;             // match lower-case identifiers
-INT : [0-9]+ ;			  // match number
+ID : LETTER (LETTER | DIGIT)+ ;
+INT : DIGIT+ ;
+LETTER : [a-zA-Z] ;
+DIGIT : [0-9] ;
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
