@@ -6,6 +6,7 @@ public class JwacTest {
 	
 	@Test
 	public void testSimpleCompile() {
-		Jwac.main(new String[]{ this.getClass().getResource("/test.wag").getFile() });
+		Jwac.main(new String[]{ this.getClass().getResource("/test.wag").getFile(), "i" });
+		
 	}
 }
