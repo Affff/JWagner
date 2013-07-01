@@ -2,88 +2,32 @@
 	Test melody
 */
 melody test {
-	# start notes at tact #0
-	play 72 1 1; # play 1 tacts on 1 channel
+	
+	# main tune
+	tune main {
+		play 72 1 1;
+		go;
+		play 69 1 1;
+		go;
+		play 74 1 1;
+		go 2;
+		play 69 2 1;
+		go 3;
+	}
 
-	# tact 1
-	go;
-	
-	play 69 1 1; # play 2 tacts on 1 channel
-
-	# tact 2
-	go;
-	
-	play 74 1 1; # play 1 tact on 1 channel
-
-	# tacts 3 & 4
-	go 2;
-	
-	play 69 2 1; # play 2 tacts on 1 channel
-	
-	go 3;	
-	
-	# loop1
-	# start notes at tact #0
-	play 72 1 1; # play 1 tacts on 1 channel
-
-	# tact 1
-	go;
-	
-	play 69 1 1; # play 2 tacts on 1 channel
-
-	# tact 2
-	go;
-	
-	play 74 1 1; # play 1 tact on 1 channel
-
-	# tacts 3 & 4
-	go 2;
-	
-	play 69 2 1; # play 2 tacts on 1 channel
-	
-	go 3;
+	tune main;
 	
 	# the ending
 	play 72 1 1; # play 1 tacts on 1 channel
-
-	# tact 1
 	go;
-	
 	play 77 1 1; # play 1 tacts on 1 channel
-
-	# tact 1
 	go;
-	
 	play 76 1 1; # play 1 tacts on 1 channel
-
-	# tact 1
 	go;
-	
 	play 74 1 1; # play 2 tacts on 1 channel
-
-	# tact 1
 	go;
 
-	# loop2
-	# start notes at tact #0
-	play 72 1 1; # play 1 tacts on 1 channel
-
-	# tact 1
-	go 1;
+	tune main;
 	
-	play 69 1 1; # play 2 tacts on 1 channel
-
-	# tact 2
-	go;
-	
-	play 74 1 1; # play 1 tact on 1 channel
-
-	# tacts 3 & 4
-	go 2;
-	
-	play 69 2 1; # play 2 tacts on 1 channel
-	
-	go 3;
-	
-	# end melody
+	# the end of melody
 }

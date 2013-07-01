@@ -5,24 +5,31 @@ grammar JWagner;
 }
 
 melodyDeclaration // melody block
-	: 'melody' ID (melodyBody)?	
+	: 'melody' ID melodyBody
 ;
 
 melodyBody //melody body
 	: '{'
-	 commands
-	 //more commands here
+	 ( command
+	 | tune
+	 )*
 	 '}' 
 ;
 
-commands // generic commands block
- 	: ((nopCmd
- 		| playNoteCmd
- 		| goCmd) NEWLINE)*
+tune // procedure block  
+	: (
+		( (mute)? 'tune' ID melodyBody )
+	          | ( 'tune' ID CMDEND )
+	)
 ;
 
-nopCmd // do nothing
- 	: 
+mute 
+	: 'mute'
+;
+
+command // generic commands block
+ 	: (playNoteCmd
+ 	   | goCmd) CMDEND
 ;
 
 playNoteCmd // playing single note command
@@ -37,7 +44,7 @@ ID : LETTER (LETTER | DIGIT)+ ;
 INT : DIGIT+ ;
 LETTER : [a-zA-Z] ;
 DIGIT : [0-9] ;
-NEWLINE : [;]+ ;
+CMDEND : [;]+ ;
 
 // comments
 ROWCOMMENT : '#' .*? [\r\n] -> skip ; // skip one row comments

@@ -3,7 +3,9 @@ package ru.obolensk.afff.wagner.jwac;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -14,11 +16,12 @@ import org.slf4j.LoggerFactory;
 
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerLexer;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser;
-import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.CommandsContext;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.CommandContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.GoCmdContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyBodyContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyDeclarationContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.PlayNoteCmdContext;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TuneContext;
 import ru.obolensk.afff.wagner.jwac.il.Command;
 import ru.obolensk.afff.wagner.jwac.il.CommandParam;
 import ru.obolensk.afff.wagner.jwac.il.CommandsBlock;
@@ -76,39 +79,70 @@ public class Jwac {
 		JWagnerParser parser = new JWagnerParser(tokens);
 		MelodyDeclarationContext melodyContext = parser.melodyDeclaration();
 		MelodyBodyContext body = melodyContext.melodyBody();
-		CommandsContext commands = body.commands();
+
+		// processing commands
 		List<Command> commandsList = new ArrayList<Command>();
-		for (ParseTree child : commands.children) {
-			Object cmd = child.getPayload();
-			if (cmd instanceof PlayNoteCmdContext) {
-				PlayNoteCmdContext playNote = (PlayNoteCmdContext) cmd;
-				CommandParam note = new CommandParam(playNote.getChild(1)
-						.getText());
-				CommandParam tacts = new CommandParam(playNote.getChild(2)
-						.getText());
-				CommandParam channel = new CommandParam(playNote.getChild(3)
-						.getText());
-				commandsList.add(new PlayNoteCommand(note, tacts, channel));
-			} else if (cmd instanceof GoCmdContext) {
-				GoCmdContext goForward = (GoCmdContext) cmd;
-				if (goForward.getChildCount() > 1) {
-					CommandParam tactsForward = new CommandParam(goForward
-							.getChild(1).getText());
-					commandsList.add(new GoCommand(tactsForward));
-				} else {
-					commandsList.add(new GoCommand());
-				}
-			}
-		}
+		Map<String, List<Command>> mutesList = new HashMap<String, List<Command>>();
+		List<ParseTree> commands = body.children;
+		parseBody(commands, commandsList, mutesList);
 
 		CommandsBlock block = new CommandsBlock(
 				commandsList.toArray(new Command[0]));
 
 		return new Melody(melodyContext.ID().getText(), block);
 	}
+	
+	private static void parseBody(List<ParseTree> commands, List<Command> commandsList, Map<String, List<Command>> mutesList) {
+		for (ParseTree currEl : commands) {
+			if (currEl instanceof CommandContext) {
+				CommandContext commandContext = (CommandContext) currEl;
+				Object cmd = commandContext.getChild(0).getPayload();
+				if (cmd instanceof PlayNoteCmdContext) {
+					PlayNoteCmdContext playNote = (PlayNoteCmdContext) cmd;
+					CommandParam note = new CommandParam(playNote.getChild(1)
+							.getText());
+					CommandParam tacts = new CommandParam(playNote.getChild(2)
+							.getText());
+					CommandParam channel = new CommandParam(playNote
+							.getChild(3).getText());
+					commandsList.add(new PlayNoteCommand(note, tacts, channel));
+				} else if (cmd instanceof GoCmdContext) {
+					GoCmdContext goForward = (GoCmdContext) cmd;
+					if (goForward.getChildCount() > 1) {
+						CommandParam tactsForward = new CommandParam(goForward
+								.getChild(1).getText());
+						commandsList.add(new GoCommand(tactsForward));
+					} else {
+						commandsList.add(new GoCommand());
+					}
+				}
+			} else if (currEl instanceof TuneContext) {
+				TuneContext tuneContext = (TuneContext) currEl;
+				String tuneName = tuneContext.ID().getText();
+				List<Command> tuneCmdList = new ArrayList<Command>();
+				MelodyBodyContext body = tuneContext.melodyBody();
+				if (body != null) {
+					boolean isMute = (tuneContext.mute() != null);
+					List<ParseTree> subCommands = body.children;
+					parseBody(subCommands, tuneCmdList, mutesList);
+					if (!isMute) {
+						commandsList.addAll(tuneCmdList);
+					}
+					mutesList.put(tuneName, tuneCmdList);
+				} else {
+					List<Command> cmdList = mutesList.get(tuneName);
+					if (cmdList != null) {
+						commandsList.addAll(cmdList);
+					}
+				}
+			}
+		}
+	}
 
 	private static void verify(Melody melody) {
 		// TODO do melody postverification
+		// verify valid note numbers and MIDI channels
+		// verify no dublicates in tune names
 	}
 
 	private static void play(Melody melody) throws Exception {

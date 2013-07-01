@@ -12,11 +12,8 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterGoCmd(JWagnerParser.GoCmdContext ctx) { }
 	@Override public void exitGoCmd(JWagnerParser.GoCmdContext ctx) { }
 
-	@Override public void enterNopCmd(JWagnerParser.NopCmdContext ctx) { }
-	@Override public void exitNopCmd(JWagnerParser.NopCmdContext ctx) { }
-
-	@Override public void enterCommands(JWagnerParser.CommandsContext ctx) { }
-	@Override public void exitCommands(JWagnerParser.CommandsContext ctx) { }
+	@Override public void enterCommand(JWagnerParser.CommandContext ctx) { }
+	@Override public void exitCommand(JWagnerParser.CommandContext ctx) { }
 
 	@Override public void enterMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
 	@Override public void exitMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
@@ -24,8 +21,14 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
 	@Override public void exitMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
 
+	@Override public void enterTune(JWagnerParser.TuneContext ctx) { }
+	@Override public void exitTune(JWagnerParser.TuneContext ctx) { }
+
 	@Override public void enterPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx) { }
 	@Override public void exitPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx) { }
+
+	@Override public void enterMute(JWagnerParser.MuteContext ctx) { }
+	@Override public void exitMute(JWagnerParser.MuteContext ctx) { }
 
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	@Override public void exitEveryRule(ParserRuleContext ctx) { }
