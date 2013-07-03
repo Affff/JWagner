@@ -16,11 +16,13 @@ import org.slf4j.LoggerFactory;
 
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerLexer;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.ChannelContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.CommandContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.GoCmdContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyBodyContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyDeclarationContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.PlayNoteCmdContext;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TactLenghtContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TuneContext;
 import ru.obolensk.afff.wagner.jwac.il.Command;
 import ru.obolensk.afff.wagner.jwac.il.CommandParam;
@@ -99,13 +101,12 @@ public class Jwac {
 				Object cmd = commandContext.getChild(0).getPayload();
 				if (cmd instanceof PlayNoteCmdContext) {
 					PlayNoteCmdContext playNote = (PlayNoteCmdContext) cmd;
-					CommandParam note = new CommandParam(playNote.getChild(1)
-							.getText());
-					CommandParam tacts = new CommandParam(playNote.getChild(2)
-							.getText());
-					CommandParam channel = new CommandParam(playNote
-							.getChild(3).getText());
-					commandsList.add(new PlayNoteCommand(note, tacts, channel));
+					CommandParam note = new CommandParam(playNote.note().getText());
+					TactLenghtContext tactLenghtCtx = playNote.tactLenght();
+					CommandParam tactLenght = new CommandParam(tactLenghtCtx != null ? tactLenghtCtx.getText() : "1");
+					ChannelContext channelCtx = playNote.channel();
+					CommandParam channel = new CommandParam(channelCtx != null ? channelCtx.getText() : "1");
+					commandsList.add(new PlayNoteCommand(note, tactLenght, channel));
 				} else if (cmd instanceof GoCmdContext) {
 					GoCmdContext goForward = (GoCmdContext) cmd;
 					if (goForward.getChildCount() > 1) {
@@ -122,7 +123,7 @@ public class Jwac {
 				List<Command> tuneCmdList = new ArrayList<Command>();
 				MelodyBodyContext body = tuneContext.melodyBody();
 				if (body != null) {
-					boolean isMute = (tuneContext.mute() != null);
+					boolean isMute = (tuneContext.playNow() == null);
 					List<ParseTree> subCommands = body.children;
 					parseBody(subCommands, tuneCmdList, mutesList);
 					if (!isMute) {

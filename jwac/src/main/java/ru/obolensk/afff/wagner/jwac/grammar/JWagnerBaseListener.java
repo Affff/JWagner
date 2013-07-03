@@ -9,6 +9,9 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.ErrorNode;
 
 public class JWagnerBaseListener implements JWagnerListener {
+	@Override public void enterPlayNow(JWagnerParser.PlayNowContext ctx) { }
+	@Override public void exitPlayNow(JWagnerParser.PlayNowContext ctx) { }
+
 	@Override public void enterGoCmd(JWagnerParser.GoCmdContext ctx) { }
 	@Override public void exitGoCmd(JWagnerParser.GoCmdContext ctx) { }
 
@@ -21,14 +24,20 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
 	@Override public void exitMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
 
+	@Override public void enterTactLenght(JWagnerParser.TactLenghtContext ctx) { }
+	@Override public void exitTactLenght(JWagnerParser.TactLenghtContext ctx) { }
+
 	@Override public void enterTune(JWagnerParser.TuneContext ctx) { }
 	@Override public void exitTune(JWagnerParser.TuneContext ctx) { }
+
+	@Override public void enterChannel(JWagnerParser.ChannelContext ctx) { }
+	@Override public void exitChannel(JWagnerParser.ChannelContext ctx) { }
 
 	@Override public void enterPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx) { }
 	@Override public void exitPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx) { }
 
-	@Override public void enterMute(JWagnerParser.MuteContext ctx) { }
-	@Override public void exitMute(JWagnerParser.MuteContext ctx) { }
+	@Override public void enterNote(JWagnerParser.NoteContext ctx) { }
+	@Override public void exitNote(JWagnerParser.NoteContext ctx) { }
 
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	@Override public void exitEveryRule(ParserRuleContext ctx) { }

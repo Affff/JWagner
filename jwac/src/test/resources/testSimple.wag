@@ -1,0 +1,3 @@
+melody test {
+	play c6;
+}

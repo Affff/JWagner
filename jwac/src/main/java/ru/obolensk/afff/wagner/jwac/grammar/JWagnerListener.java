@@ -6,6 +6,9 @@ import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
 
 public interface JWagnerListener extends ParseTreeListener {
+	void enterPlayNow(JWagnerParser.PlayNowContext ctx);
+	void exitPlayNow(JWagnerParser.PlayNowContext ctx);
+
 	void enterGoCmd(JWagnerParser.GoCmdContext ctx);
 	void exitGoCmd(JWagnerParser.GoCmdContext ctx);
 
@@ -18,12 +21,18 @@ public interface JWagnerListener extends ParseTreeListener {
 	void enterMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx);
 	void exitMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx);
 
+	void enterTactLenght(JWagnerParser.TactLenghtContext ctx);
+	void exitTactLenght(JWagnerParser.TactLenghtContext ctx);
+
 	void enterTune(JWagnerParser.TuneContext ctx);
 	void exitTune(JWagnerParser.TuneContext ctx);
+
+	void enterChannel(JWagnerParser.ChannelContext ctx);
+	void exitChannel(JWagnerParser.ChannelContext ctx);
 
 	void enterPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx);
 	void exitPlayNoteCmd(JWagnerParser.PlayNoteCmdContext ctx);
 
-	void enterMute(JWagnerParser.MuteContext ctx);
-	void exitMute(JWagnerParser.MuteContext ctx);
+	void enterNote(JWagnerParser.NoteContext ctx);
+	void exitNote(JWagnerParser.NoteContext ctx);
 }

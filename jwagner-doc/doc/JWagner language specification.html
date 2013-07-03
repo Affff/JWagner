@@ -7,7 +7,7 @@
 <h3 style="text-align: center;" align="center"><span style="" lang="EN-US">v0.1 alpha<o:p></o:p></span></h3>
 
 <p class="MsoNormal"><span style="" lang="EN-US">Table of
-content:</span></p><ol><li><span style="" lang="EN-US">Language overview;</span></li><li><span style="" lang="EN-US">Language basics;</span></li><ol><li><span style="" lang="EN-US">Comments;</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span><span style="" lang="EN-US">Basic syntax;</span></li><li><span style="" lang="EN-US">Melody structure;</span></li><li><span style="" lang="EN-US">Playback control;</span></li></ol><li><span style="" lang="EN-US">Commands</span></li><ol><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">play</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">go</span></li></ol></ol>
+content:</span></p><ol><li><span style="" lang="EN-US">Language overview;</span></li><li><span style="" lang="EN-US">Language basics;</span></li><ol><li><span style="" lang="EN-US">Comments;</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span><span style="" lang="EN-US">Basic syntax;</span></li><li><span style="" lang="EN-US">Melody structure;</span></li><li><span style="" lang="EN-US">Playback control;</span></li></ol><li><span style="" lang="EN-US">Commands</span></li><ol><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">play</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">go</span></li><li><span style="" lang="EN-US">tune <span style="font-style: italic;">and</span> play tune<br></span></li></ol></ol>
 
 <h2><span style="" lang="EN-US">1. Language overview<o:p></o:p></span></h2>
 
@@ -19,11 +19,11 @@ music playing language. Currently it developed for Java VM only, so it&nbsp;call
 <h3><span style="" lang="EN-US">2.1 Comments<o:p></o:p></span></h3>
 
 <p class="MsoNormal"><span style="" lang="EN-US">Comments
-format is &#8220;#...&#8221; for one row comment and /* &#8230; */ &#8211; block comments.<o:p></o:p></span></p>
+format is &#8220;//...&#8221; for one row comment and /* &#8230; */ &#8211; block comments.<o:p></o:p></span></p>
 
 <p class="MsoNormal"><span style="" lang="EN-US">Examle:<o:p></o:p></span></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US"># this is comment<o:p></o:p></span></b></p>
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">// this is comment<o:p></o:p></span></b></p>
 
 <p class="MsoNormal"><b style=""><span style="" lang="EN-US">play 1; #this is another<o:p></o:p></span></b></p>
 
@@ -45,7 +45,7 @@ C) style &#8211; {&#8230;}. <o:p></o:p></span></p>
 
 <p class="MsoNormal" style="line-height: normal;"><b style=""><span style="" lang="EN-US">}<o:p></o:p></span></b></p>
 
-<p class="MsoNormal" style="line-height: normal;"><span style="" lang="EN-US">Spaces, tabs, carret returns be ignored.<o:p></o:p></span></p>
+<p class="MsoNormal" style="line-height: normal;"><span style="" lang="EN-US">Spaces, tabs, carret returns be ignored.</span></p>Some keywords are reserved and cannot be used for any names or identifiers: <span style="font-weight: bold;">play, tune, go</span>.
 
 <h3><span style="" lang="EN-US">2.3 Melody structure <o:p></o:p></span></h3>
 
@@ -97,13 +97,12 @@ off in tact {current tact + NoteLength}.<o:p></o:p></span></p>
 <p class="MsoNormal"><span style="" lang="EN-US">Format of
 the command:<o:p></o:p></span></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US">play {NoteNumber} {NoteLengthInTacts}
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">play {NoteSharpOctave} {NoteLengthInTacts}
 {MIDIChannelN}<o:p></o:p></span></b></p>
 
-<p class="MsoNormal"><span style="" lang="EN-US">Examples:<o:p></o:p></span></p>
+<p class="MsoNormal"><span style="" lang="EN-US">Note writes in standart notation: note symbol (c,d,e,f,g,a,b) + sharp (if needed) + octave number. Note "C" six octave: "c6". Note "D" four octave with sharp: "d#4"</span></p><p class="MsoNormal"><span style="" lang="EN-US">Examples:<o:p></o:p></span></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US">play 70 1 1; # playing note with number = 70
-(MIDI encoding) on 1 MIDI channel for 1 tact<o:p></o:p></span></b></p>
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">play c6 1 1; // playing note C of 6 octave on 1 MIDI channel for 1 tact<o:p></o:p></span></b></p>
 
 <h3><span style="" lang="EN-US">3.2 go<o:p></o:p></span></h3>
 
@@ -117,11 +116,14 @@ the command:<o:p></o:p></span></p>
 
 <p class="MsoNormal"><span style="" lang="EN-US">Examples:<o:p></o:p></span></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go; # go forward for 1 tact<o:p></o:p></span></b></p>
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go; // go forward for 1 tact<o:p></o:p></span></b></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go 3; # go forward for 3 tacts<o:p></o:p></span></b></p><big><span style="font-weight: bold;">3.3 Tune</span></big><br>Often
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go 3; // go forward for 3 tacts<o:p></o:p></span></b></p><big><span style="font-weight: bold;">3.3 Tune <span style="font-style: italic;">and</span> play tune</span><span style="font-weight: bold;"></span></big><br>Often
 one place in melody played again and again. Then to be good idea to
 write such melody part once and repeat again simple by name.<br>Tune is
 submelody block, that can consists all elements of melody (include
-sub-tunes). This command have two different kinds: long, when<br>melody specified, and short, when called tune, writed earlier.<br>Tune be played in place where it declared (!). If tune wrote for future use, it must be marked as <span style="font-weight: bold;">'mute'</span>. That tune do not be played in place, and ALL of it subtunes too.<br><br>Basic syntax of long <span style="font-weight: bold;">tune</span> command:<br><br><span style="font-weight: bold;">[mute] tune {tuneName} {</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; command1;</span><p style="font-weight: bold;" class="MsoNormal">&nbsp;&nbsp;&nbsp; ...</p><p style="font-weight: bold;" class="MsoNormal">&nbsp;&nbsp;&nbsp; commandN;</p><span style="font-weight: bold;">}</span><br><br>Basic syntax of short <span style="font-weight: bold;">tune</span> command:<br><br><span style="font-weight: bold;">tune {tuneName};<br><br></span>Example:<span style="font-weight: bold;"><br><br>melody test {<br>&nbsp;&nbsp;&nbsp;&nbsp;tune t1 { <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mute tune t2 { # no playing of the tune and ALL it subtunes in this place</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><b style="font-weight: bold;"><span style="" lang="EN-US">play 70 1 1;</span></b><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; go;</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br></span><b style="font-weight: bold;"><span style="" lang="EN-US">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; play 72 1 1;</span></b><span style="font-weight: bold;"> # playing note at that point - no mute flag on tune t1</span><br style="font-weight: bold;"><b style="font-weight: bold;"><span style="" lang="EN-US">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; go;</span></b><br style="font-weight: bold;"><span style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; }</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; tune t2; # now playing tune t2</span><br style="font-weight: bold;"><span style="font-weight: bold;">}</span></span><big><big style="font-weight: bold;"><span style="" lang="EN-US"></span></big></big><p class="MsoNormal"><span style="" lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+sub-tunes). This command have two different kinds: long, when<br>melody specified, and short, when called tune, writed earlier.<br>Typically, tune be played in place where it declared if it started with <span style="font-weight: bold;">'play'</span> keyword. If tune was wroted for future use, it must be specified without forwarding <span style="font-weight: bold;">'play'</span> word. That tune do not be played in place, and ALL of it subtunes too.<br><br>There two kinds of tune command: with body (tune declaration) and without body (tune call).<br><br>Basic syntax of declaring&nbsp;tune command:<br><br><span style="font-weight: bold;">[play] tune {tuneName} {</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; command1;</span><p style="font-weight: bold;" class="MsoNormal">&nbsp;&nbsp;&nbsp; ...</p><p style="font-weight: bold;" class="MsoNormal">&nbsp;&nbsp;&nbsp; commandN;</p><span style="font-weight: bold;">}</span><br><br>For
+this command it is allowed to overwrite tune with same name in one
+melody by declaring another tune with same name. In this case old tune
+be active directly to point of new tune redeclaration.<br><br>Basic syntax of&nbsp;<span style="font-weight: bold;">tune</span> call command:<br><br><span style="font-weight: bold;">play tune {tuneName};<br></span><br>If no tune with specified name was found, program not stop working, but nothing be played.<span style="font-weight: bold;"><br><br></span>Example:<span style="font-weight: bold;"><br><br>melody test {<br>&nbsp;&nbsp;&nbsp; play tune t1 { <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;tune t2 { // no playing of the tune and ALL it subtunes in this place</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><b style="font-weight: bold;"><span style="" lang="EN-US">play c6 1 1;</span></b><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; go;</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; }<br></span><b style="font-weight: bold;"><span style="" lang="EN-US">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; play d#6 1 1;</span></b><span style="font-weight: bold;"> // playing note at that point - no mute flag on tune t1</span><br style="font-weight: bold;"><b style="font-weight: bold;"><span style="" lang="EN-US">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; go;</span></b><br style="font-weight: bold;"><span style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; }</span><br style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp; play tune t2; // now playing tune t2</span><br style="font-weight: bold;"><span style="font-weight: bold;">}</span></span><big><big style="font-weight: bold;"><span style="" lang="EN-US"></span></big></big><p class="MsoNormal"><span style="" lang="EN-US"><o:p>&nbsp;</o:p></span></p>
 </body></html>

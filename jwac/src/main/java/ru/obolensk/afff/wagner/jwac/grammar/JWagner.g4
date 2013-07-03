@@ -18,13 +18,9 @@ melodyBody //melody body
 
 tune // procedure block  
 	: (
-		( (mute)? 'tune' ID melodyBody )
-	          | ( 'tune' ID CMDEND )
+		( (playNow)? 'tune' ID melodyBody )
+	          | ( playNow 'tune' ID CMDEND )
 	)
-;
-
-mute 
-	: 'mute'
 ;
 
 command // generic commands block
@@ -33,21 +29,42 @@ command // generic commands block
 ;
 
 playNoteCmd // playing single note command
- 	: 'play' INT INT INT
+ 	: 'play' note tactLenght? channel?
 ;
 
 goCmd // go forward for N or 1 (by default) tacts 
- 	: 'go' INT?
+ 	: 'go' tactLenght?
 ;
+
+playNow 
+	: 'play'
+;
+
+note : NOTE ;
+
+NOTE
+	: NOTEKEY DIEZ? OCTAVE
+;
+
+tactLenght : TACTS ;
+
+channel : INT ;
+
+TACTS : INT ;
+
+NOTEKEY : LETTER ;
+DIEZ : '#' ;
+OCTAVE : DIGIT ;
+
+fragment LETTER : [a-zA-Z] ;
+fragment DIGIT : [0-9] ;
 
 ID : LETTER (LETTER | DIGIT)+ ;
 INT : DIGIT+ ;
-LETTER : [a-zA-Z] ;
-DIGIT : [0-9] ;
 CMDEND : [;]+ ;
 
 // comments
-ROWCOMMENT : '#' .*? [\r\n] -> skip ; // skip one row comments
+ROWCOMMENT : '//' .*? [\r\n] -> skip ; // skip one row comments
 BLOCKCOMMENT : '/*' .*? '*/' -> skip ; // .*? matches anything until the first */
 
 // spaces and new lines

@@ -10,8 +10,8 @@ public class PlayNoteCommand extends Command {
 		super("playNote", new CommandParam[] { note, tacts, channel });
 	}
 
-	public int getNote() {
-		return getChilds()[0].getIntValue();
+	public String getNote() {
+		return getChilds()[0].getValue();
 	}
 
 	public int getTacts() {

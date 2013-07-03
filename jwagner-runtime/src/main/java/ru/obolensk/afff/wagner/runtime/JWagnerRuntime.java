@@ -40,9 +40,10 @@ public class JWagnerRuntime implements AutoCloseable {
 		logger.debug("JWagnerRuntime created.");
 	}
 
-	public void playNote(int note, int length, int channel)
+	public void playNote(String note, int length, int channel)
 			throws InterruptedException {
-		logger.trace("playNote called (note={1},length={2},channel={3})", note, length, channel);
+		logger.trace("playNote called (note={1},length={2},channel={3})", note,
+				length, channel);
 		stack.get(currTact).add(new Note(channel, note));
 		fillStaskIfNeeded(length);
 		stack.get(currTact + length).add(new Note(channel, note, true));
@@ -70,11 +71,15 @@ public class JWagnerRuntime implements AutoCloseable {
 			for (MidiElement el : elements) {
 				if (el instanceof Note) {
 					Note note = (Note) el;
+					int midiNote = note.getMidiNote();
+					if (midiNote == Note.NOT_NOTE) {
+						continue;
+					}
 					MidiChannel channel = channels[note.getChannel()];
 					if (!note.isOff()) {
-						channel.noteOn(note.getNote(), velosity);
+						channel.noteOn(midiNote, velosity);
 					} else {
-						channel.noteOff(note.getNote());
+						channel.noteOff(midiNote);
 					}
 				}
 			}

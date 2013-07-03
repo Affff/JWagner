@@ -1,33 +1,33 @@
 /*
-	Test melody
+	Test melody ("E-eeh uhnem!", russian folk song)
 */
 melody test {
 	
-	# main tune
-	tune main {
-		play 72 1 1;
+	// main tune
+	play tune main {
+		play c6; //72;
 		go;
-		play 69 1 1;
+		play a5; //69;
 		go;
-		play 74 1 1;
+		play d6; //74;
 		go 2;
-		play 69 2 1;
+		play a5 2; //69
 		go 3;
 	}
 
-	tune main;
+	play tune main;
 	
-	# the ending
-	play 72 1 1; # play 1 tacts on 1 channel
+	// the ending
+	play c6; //72
 	go;
-	play 77 1 1; # play 1 tacts on 1 channel
+	play f6; //77
 	go;
-	play 76 1 1; # play 1 tacts on 1 channel
+	play e6; //76
 	go;
-	play 74 1 1; # play 2 tacts on 1 channel
+	play d6; //74
 	go;
 
-	tune main;
+	play tune main;
 	
-	# the end of melody
+	// the end of melody
 }
