@@ -2,32 +2,38 @@
 	Test melody ("E-eeh uhnem!", russian folk song)
 */
 melody test {
+
+	play async tune firstTrack {
+		// main tune
+		play tune main {
+			play c6;
+			go;
+			play a5;
+			go;
+			play d6;
+			go 2;
+			play a5 2;
+			go 2;
+		}
+		
+		play tune main;
+		
+		// the ending
+		play c6 2;
+		go;
+		play f6 2;
+		go;
+		play e6;
+		go;
+		play d6 2;
+		go;
 	
-	// main tune
-	play tune main {
-		play c6; //72;
-		go;
-		play a5; //69;
-		go;
-		play d6; //74;
-		go 2;
-		play a5 2; //69
-		go 3;
+		play tune main;
 	}
-
-	play tune main;
 	
-	// the ending
-	play c6; //72
-	go;
-	play f6; //77
-	go;
-	play e6; //76
-	go;
-	play d6; //74
-	go;
-
-	play tune main;
+	play async tune secondTrack {
+		
+	}
 	
 	// the end of melody
 }

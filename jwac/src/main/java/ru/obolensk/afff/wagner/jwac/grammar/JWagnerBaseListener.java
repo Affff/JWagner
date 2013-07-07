@@ -15,6 +15,9 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterGoCmd(JWagnerParser.GoCmdContext ctx) { }
 	@Override public void exitGoCmd(JWagnerParser.GoCmdContext ctx) { }
 
+	@Override public void enterPlay(JWagnerParser.PlayContext ctx) { }
+	@Override public void exitPlay(JWagnerParser.PlayContext ctx) { }
+
 	@Override public void enterCommand(JWagnerParser.CommandContext ctx) { }
 	@Override public void exitCommand(JWagnerParser.CommandContext ctx) { }
 
@@ -38,6 +41,9 @@ public class JWagnerBaseListener implements JWagnerListener {
 
 	@Override public void enterNote(JWagnerParser.NoteContext ctx) { }
 	@Override public void exitNote(JWagnerParser.NoteContext ctx) { }
+
+	@Override public void enterAsync(JWagnerParser.AsyncContext ctx) { }
+	@Override public void exitAsync(JWagnerParser.AsyncContext ctx) { }
 
 	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	@Override public void exitEveryRule(ParserRuleContext ctx) { }

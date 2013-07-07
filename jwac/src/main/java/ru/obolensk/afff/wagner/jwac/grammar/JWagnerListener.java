@@ -12,6 +12,9 @@ public interface JWagnerListener extends ParseTreeListener {
 	void enterGoCmd(JWagnerParser.GoCmdContext ctx);
 	void exitGoCmd(JWagnerParser.GoCmdContext ctx);
 
+	void enterPlay(JWagnerParser.PlayContext ctx);
+	void exitPlay(JWagnerParser.PlayContext ctx);
+
 	void enterCommand(JWagnerParser.CommandContext ctx);
 	void exitCommand(JWagnerParser.CommandContext ctx);
 
@@ -35,4 +38,7 @@ public interface JWagnerListener extends ParseTreeListener {
 
 	void enterNote(JWagnerParser.NoteContext ctx);
 	void exitNote(JWagnerParser.NoteContext ctx);
+
+	void enterAsync(JWagnerParser.AsyncContext ctx);
+	void exitAsync(JWagnerParser.AsyncContext ctx);
 }

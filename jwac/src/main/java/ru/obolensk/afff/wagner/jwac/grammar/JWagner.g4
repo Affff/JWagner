@@ -29,7 +29,7 @@ command // generic commands block
 ;
 
 playNoteCmd // playing single note command
- 	: 'play' note tactLenght? channel?
+ 	: play note tactLenght? channel?
 ;
 
 goCmd // go forward for N or 1 (by default) tacts 
@@ -37,7 +37,15 @@ goCmd // go forward for N or 1 (by default) tacts
 ;
 
 playNow 
+	: play (async)?
+;
+
+play 
 	: 'play'
+;
+
+async 
+	: 'async'
 ;
 
 note : NOTE ;
