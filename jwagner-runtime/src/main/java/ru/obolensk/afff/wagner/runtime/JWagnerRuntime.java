@@ -2,6 +2,7 @@ package ru.obolensk.afff.wagner.runtime;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,11 +23,12 @@ public class JWagnerRuntime implements AutoCloseable {
 
 	private static int velosity = 60; // FIXME velosity not changed now, setted
 										// as for piano
-	private static long tactLenght = 700; // FIXME tact size not changed now,
+	private static long tactLenght = 500; // FIXME tact size not changed now,
 											// setted normal speed melody
 
 	private int currTact = 0;
 	private LinkedList<List<MidiElement>> stack = new LinkedList<List<MidiElement>>();
+	private Deque<Integer> tactStack = new LinkedList<Integer>();
 
 	public JWagnerRuntime() throws Exception {
 		logger.trace("JWagnerRuntime creation began...");
@@ -42,27 +44,29 @@ public class JWagnerRuntime implements AutoCloseable {
 
 	public void playNote(String note, int length, int channel)
 			throws InterruptedException {
-		logger.trace("playNote called (note={1},length={2},channel={3})", note,
+		logger.trace("playNote called (note={},length={},channel={})", note,
 				length, channel);
 		stack.get(currTact).add(new Note(channel, note));
 		fillStaskIfNeeded(length);
 		stack.get(currTact + length).add(new Note(channel, note, true));
+	}
+	public void goForward(int forwardTactsCount) {
+		logger.trace("go forward for {} tacts.", forwardTactsCount);
+		fillStaskIfNeeded(forwardTactsCount);
+		currTact += forwardTactsCount;
+		logger.trace("currTact = {}", currTact);
 	}
 
 	private void fillStaskIfNeeded(int length) {
 		fillStack((currTact + 1 + length) - stack.size());
 	}
 
-	public void goForward(int forwardTactsCount) {
-		logger.trace("go forward for {1} tacts.", forwardTactsCount);
-		fillStack(forwardTactsCount);
-		currTact += forwardTactsCount;
-	}
 
 	private void fillStack(int forwardTactsCount) {
 		for (int i = 0; i < forwardTactsCount; i++) {
 			stack.add(new ArrayList<MidiElement>());
 		}
+		logger.trace("Stack size = {}", stack.size());
 	}
 
 	public void play() throws InterruptedException {
@@ -85,6 +89,16 @@ public class JWagnerRuntime implements AutoCloseable {
 			}
 			Thread.sleep(tactLenght);
 		}
+	}
+
+	public void pushTact() {
+		tactStack.push(currTact);
+		logger.trace("Push tact = {}", currTact);
+	}
+
+	public void popTact() {
+		currTact = tactStack.pop();
+		logger.trace("Pop tact = {}", currTact);
 	}
 
 	@Override

@@ -12,6 +12,8 @@ import ru.obolensk.afff.wagner.jwac.il.ILBuilder;
 import ru.obolensk.afff.wagner.jwac.il.Melody;
 import ru.obolensk.afff.wagner.jwac.il.impl.GoCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PlayNoteCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.PopTactCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.PushTactCommand;
 import ru.obolensk.afff.wagner.jwac.util.AppCfg;
 import ru.obolensk.afff.wagner.jwac.verify.LangVerifier;
 import ru.obolensk.afff.wagner.runtime.JWagnerRuntime;
@@ -64,7 +66,11 @@ public class Jwac {
 				} else if (command instanceof GoCommand) {
 					GoCommand goCmd = (GoCommand) command;
 					runtime.goForward(goCmd.getForwardTactsCount());
-				}
+				} else if (command instanceof PushTactCommand) {
+					runtime.pushTact();
+				} else if (command instanceof PopTactCommand) {
+					runtime.popTact();
+				} 
 			}
 			runtime.play();
 		}

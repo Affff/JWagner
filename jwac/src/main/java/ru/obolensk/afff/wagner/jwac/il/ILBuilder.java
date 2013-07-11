@@ -22,7 +22,10 @@ import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.PlayNoteCmdContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TactLenghtContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TuneContext;
 import ru.obolensk.afff.wagner.jwac.il.impl.GoCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.LazyTunePlayCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PlayNoteCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.PopTactCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.PushTactCommand;
 
 public class ILBuilder {
 
@@ -86,7 +89,10 @@ public class ILBuilder {
 				boolean isAsync = false;
 				if (!isMute) {
 					isMute = (tuneContext.playNow().play() == null);
-					isAsync = (tuneContext.playNow().async() == null);
+					isAsync = (tuneContext.playNow().async() != null);
+				}
+				if (isAsync) {
+					commandsList.add(new PushTactCommand());
 				}
 				if (body != null) {
 					// if tune with body, recursive process it
@@ -108,6 +114,9 @@ public class ILBuilder {
 						commandsList.add(new LazyTunePlayCommand(tuneName));
 					}
 				}
+				if (isAsync) {
+					commandsList.add(new PopTactCommand());
+				}				
 			}
 		}
 	}
@@ -124,17 +133,6 @@ public class ILBuilder {
 					i += subCommands.size() - 1;
 				}
 			}
-		}
-	}
-
-	private static class LazyTunePlayCommand extends Command {
-		public LazyTunePlayCommand(String tuneName) {
-			super("tuneLazyPlay_internal",
-					new CommandParam[] { new CommandParam(tuneName) });
-		}
-		
-		public String TuneToPlayName() {
-			return getChilds()[0].getValue();
 		}
 	}
 }
