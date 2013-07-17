@@ -14,6 +14,7 @@ import ru.obolensk.afff.wagner.jwac.il.impl.GoCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PlayNoteCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PopTactCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PushTactCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.TempoCommand;
 import ru.obolensk.afff.wagner.jwac.util.AppCfg;
 import ru.obolensk.afff.wagner.jwac.verify.LangVerifier;
 import ru.obolensk.afff.wagner.runtime.JWagnerRuntime;
@@ -59,7 +60,10 @@ public class Jwac {
 	private static void play(Melody melody) throws Exception {
 		try (JWagnerRuntime runtime = new JWagnerRuntime()) {
 			for (Command command : melody.getCommandsBlock().getCommands()) {
-				if (command instanceof PlayNoteCommand) {
+				if (command instanceof TempoCommand) {
+					TempoCommand tempoCmd = (TempoCommand) command;
+					runtime.setTempo(tempoCmd.getTempo());
+				} else if (command instanceof PlayNoteCommand) {
 					PlayNoteCommand playCmd = (PlayNoteCommand) command;
 					runtime.playNote(playCmd.getNote(), playCmd.getTacts(),
 							playCmd.getChannel());

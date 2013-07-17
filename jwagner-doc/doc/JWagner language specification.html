@@ -7,7 +7,7 @@
 <h3 style="text-align: center;" align="center"><span style="" lang="EN-US">v0.1 alpha<o:p></o:p></span></h3>
 
 <p class="MsoNormal"><span style="" lang="EN-US">Table of
-content:</span></p><ol><li><span style="" lang="EN-US">Language overview;</span></li><li><span style="" lang="EN-US">Language basics;</span></li><ol><li><span style="" lang="EN-US">Comments;</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span><span style="" lang="EN-US">Basic syntax;</span></li><li><span style="" lang="EN-US">Melody structure;</span></li><li><span style="" lang="EN-US">Playback control;</span></li></ol><li><span style="" lang="EN-US">Commands</span></li><ol><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">play</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">go</span></li><li><span style="" lang="EN-US">tune <span style="font-style: italic;">and</span> play tune<br></span></li></ol></ol>
+content:</span></p><ol><li><span style="" lang="EN-US">Language overview;</span></li><li><span style="" lang="EN-US">Language basics;</span></li><ol><li><span style="" lang="EN-US">Comments;</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;</span></span></span><span style="" lang="EN-US">Basic syntax;</span></li><li><span style="" lang="EN-US">Melody structure;</span></li><li><span style="" lang="EN-US">Playback control;</span></li></ol><li><span style="" lang="EN-US">Commands</span></li><ol><li>tempo<span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US"></span></li><li><span style="" lang="EN-US">play</span></li><li><span style="" lang="EN-US"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="" lang="EN-US">go</span></li><li><span style="" lang="EN-US">tune <span style="font-style: italic;">and</span> play tune<br></span></li></ol></ol>
 
 <h2><span style="" lang="EN-US">1. Language overview<o:p></o:p></span></h2>
 
@@ -89,7 +89,462 @@ info about language commands read p. 3.<o:p></o:p></span></p>
 
 <h2><span style="" lang="EN-US">3. Commands<o:p></o:p></span></h2>
 
-<h3><span style="" lang="EN-US">3.1 play<o:p></o:p></span></h3>
+<h3><span style="" lang="EN-US">3.1 tempo</span></h3><h3><small><span style="font-weight: normal;">The <span style="font-weight: bold;">tempo</span> command</span></small> <small><span style="font-weight: normal;">set up speed of playing melody</span></small>.&nbsp;<small style="font-weight: normal;"><span style="font-weight: normal;">T</span></small><small style="font-weight: bold;"><span style="font-weight: normal;">empo changed from place of &nbsp;command use. If no <span style="font-weight: bold;">tempo</span> command was found when first play command be processed, </span></small><small style="font-weight: normal;"><span style="font-weight: normal;"></span><span style="font-weight: bold;">moderato</span></small><small style="font-weight: normal;"><span style="font-weight: normal;"><small> <big>playing speed</big></small></span></small><small style="font-weight: bold;"><span style="font-weight: normal;"> be used.</span></small></h3>Valid values of speed shown in table:<br><br><table border="1" cellpadding="0">
+ <tbody><tr><td>Tempo</td><td>Description</td><td>Frequency, Hz</td></tr><tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">grave</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">heavy,
+  seriously</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>44</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;"><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal; text-align: left;">largo</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">broadly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>48</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">largamente</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">broadly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>50</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">adagio</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">("at
+  ease") easily,<br>
+  unhurried</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>52</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lento</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">slowly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>54</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lentamente</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">slowly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>56</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">larghetto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  faster<br>
+  than largo</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>58</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante
+  assai</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  slower<br>
+  than andante</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>61</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">adagietto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  faster<br>
+  than adagio</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>64</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">("walking")
+  flowing</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>64</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante
+  maestoso</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">in a majestic<br>
+  and stately manner</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>65</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante
+  mosso</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">with
+  motion<br>
+  or animation.</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>69</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">comodo,<br>
+  comodamente</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">convenient
+  (pace)</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>72</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante
+  non troppo</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante,<br>
+  but not too much</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>73</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante
+  con moto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andante,<br>
+  but with motion</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>76</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">andantino</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat close to andante<br>
+  (somewhat faster or slower)</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>80</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">moderato
+  assai</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  slower<br>
+  than moderato</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>84</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">moderato</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">moderately,<br>
+  neither slow nor fast</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>88</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">con moto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">with
+  motion</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>92</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegretto
+  moderato</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  slower<br>
+  than allegretto</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>96</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegretto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  slower<br>
+  than allegro</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>100</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegretto
+  mosso</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">somewhat
+  faster<br>
+  than allegretto</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>104</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">animato</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">animated;<br>
+  lively.</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>108</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">animato
+  assai</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">very much animated;<br>
+  quite lively.</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>112</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  moderato</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">quite lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>116</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">tempo di
+  marcia</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">marching</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>120</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  non troppo</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively, cheerful and quickly,<br>
+  but not too much</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>124</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  tranquillo</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly, but calm</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>128</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>132</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  molto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>149</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  assai</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>156</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  agitato,<br>
+  allegro animato</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>164</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">allegro
+  vivace</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively,<br>
+  cheerful and quickly</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>172</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">vivo,<br>
+  vivace</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">lively and
+  fast</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>180</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">presto</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">fast</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>192</small></h3><small>
+  </small></td>
+ </tr>
+ <tr style="">
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">prestissimo</p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">very fast</p>
+  </td>
+  <td style="padding: 0.75pt; text-align: center; font-weight: bold; font-family: Times New Roman,Times,serif;"><small>
+  </small><h3><small>200</small></h3><small>
+  </small></td>
+ </tr>
+</tbody></table>
+<big><span style="font-weight: bold;">3.2 </span></big><span style="" lang="EN-US"><big><span style="font-weight: bold;">play</span></big><o:p></o:p></span>
 
 <p class="MsoNormal"><span style="" lang="EN-US">The<b style=""> play</b> command playing a single note <b style="">in current tact</b>. Note will be turned
 off in tact {current tact + NoteLength}.<o:p></o:p></span></p>
@@ -107,7 +562,7 @@ sharp: "d#4"</span></p><p class="MsoNormal"><span style="" lang="EN-US">Examples
 
 <p class="MsoNormal"><b style=""><span style="" lang="EN-US">play c6 1 1; // playing note C of 6 octave on 1 MIDI channel for 1 tact<o:p></o:p></span></b></p>
 
-<h3><span style="" lang="EN-US">3.2 go<o:p></o:p></span></h3>
+<h3><span style="" lang="EN-US">3.3 go<o:p></o:p></span></h3>
 
 <p class="MsoNormal"><span style="" lang="EN-US">The<b style=""> go</b> command move current tact forward
 for specified number of tacts (if nothing specified, by default 1 tact).<o:p></o:p></span></p>
@@ -121,7 +576,7 @@ the command:<o:p></o:p></span></p>
 
 <p class="MsoNormal"><b style=""><span style="" lang="EN-US">go; // go forward for 1 tact<o:p></o:p></span></b></p>
 
-<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go 3; // go forward for 3 tacts<o:p></o:p></span></b></p><big><span style="font-weight: bold;">3.3 Tune <span style="font-style: italic;">and</span> play tune</span><span style="font-weight: bold;"></span></big><br>Often
+<p class="MsoNormal"><b style=""><span style="" lang="EN-US">go 3; // go forward for 3 tacts<o:p></o:p></span></b></p><big><span style="font-weight: bold;">3.4 Tune <span style="font-style: italic;">and</span> play tune</span><span style="font-weight: bold;"></span></big><br>Often
 one place in melody played again and again. Then to be good idea to
 write such melody part once and&nbsp;call then&nbsp;miltiply times simple by name.<br>Tune is
 submelody block, that can consists all elements of melody (include

@@ -17,8 +17,11 @@ public abstract class CombinedElement<T extends Element> extends Element {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(getName() + "\n");
-		printChilds(sb, getChilds(), 0);
+		sb.append(getName());
+		if (childs.length != 0) {
+			sb.append("\n");
+			printChilds(sb, getChilds(), 0);
+		}
 		return sb.toString();
 	}
 

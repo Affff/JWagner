@@ -25,7 +25,8 @@ tune // procedure block
 
 command // generic commands block
  	: (playNoteCmd
- 	   | goCmd) CMDEND
+ 	   | goCmd
+ 	   | tempoCmd) CMDEND
 ;
 
 playNoteCmd // playing single note command
@@ -34,6 +35,10 @@ playNoteCmd // playing single note command
 
 goCmd // go forward for N or 1 (by default) tacts 
  	: 'go' tactLenght?
+;
+
+tempoCmd // config information
+ 	: 'tempo' tempoValue 
 ;
 
 playNow 
@@ -64,6 +69,22 @@ NOTEKEY : LETTER ;
 DIEZ : '#' ;
 OCTAVE : DIGIT ;
 
+tempoValue
+	: (
+		'grave' | 'largo' | 'largamente' | 'adagio' | 'lento' | 'lentamente' |
+		'larghetto' | 'andante assai' | 'adagietto' | 'andante' | 'andante maestoso' |
+		'andante mosso' | 'comodo' | 'comodamente' | 'andante non troppo' | 'andante con moto' |
+		'andantino' | 'moderato assai' | 'moderato' | 'con moto' | 'allegretto moderato' |
+		'allegretto' | 'allegretto mosso' | 'animato' | 'animato assai' | 'allegro moderato' |
+		'tempo di marcia' | 'allegro non troppo' | 'allegro tranquillo' | 'allegro' |
+		'allegro molto' | 'allegro assai' | 'allegro agitato' | 'allegro animato' | 
+		'allegro vivace' | 'vivo' | 'vivace' | 'presto' | 'prestissimo'
+	)
+;
+
+digitalTempo : DIGIT;
+
+// lexer declarations
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
 

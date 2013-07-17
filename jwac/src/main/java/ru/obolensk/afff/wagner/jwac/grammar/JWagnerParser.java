@@ -17,21 +17,37 @@ public class JWagnerParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__6=1, T__5=2, T__4=3, T__3=4, T__2=5, T__1=6, T__0=7, NOTE=8, TACTS=9, 
-		NOTEKEY=10, DIEZ=11, OCTAVE=12, ID=13, INT=14, CMDEND=15, ROWCOMMENT=16, 
-		BLOCKCOMMENT=17, WS=18;
+		T__46=1, T__45=2, T__44=3, T__43=4, T__42=5, T__41=6, T__40=7, T__39=8, 
+		T__38=9, T__37=10, T__36=11, T__35=12, T__34=13, T__33=14, T__32=15, T__31=16, 
+		T__30=17, T__29=18, T__28=19, T__27=20, T__26=21, T__25=22, T__24=23, 
+		T__23=24, T__22=25, T__21=26, T__20=27, T__19=28, T__18=29, T__17=30, 
+		T__16=31, T__15=32, T__14=33, T__13=34, T__12=35, T__11=36, T__10=37, 
+		T__9=38, T__8=39, T__7=40, T__6=41, T__5=42, T__4=43, T__3=44, T__2=45, 
+		T__1=46, T__0=47, NOTE=48, TACTS=49, NOTEKEY=50, DIEZ=51, OCTAVE=52, ID=53, 
+		INT=54, CMDEND=55, ROWCOMMENT=56, BLOCKCOMMENT=57, WS=58, DIGIT=59;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'{'", "'tune'", "'play'", "'melody'", "'}'", "'go'", "'async'", 
-		"NOTE", "TACTS", "NOTEKEY", "'#'", "OCTAVE", "ID", "INT", "CMDEND", "ROWCOMMENT", 
-		"BLOCKCOMMENT", "WS"
+		"<INVALID>", "'andante con moto'", "'allegretto mosso'", "'vivace'", "'grave'", 
+		"'animato assai'", "'allegro moderato'", "'allegretto'", "'andante non troppo'", 
+		"'prestissimo'", "'allegretto moderato'", "'presto'", "'comodamente'", 
+		"'tempo di marcia'", "'{'", "'con moto'", "'allegro animato'", "'melody'", 
+		"'}'", "'andantino'", "'go'", "'moderato assai'", "'larghetto'", "'andante assai'", 
+		"'tune'", "'lentamente'", "'allegro assai'", "'animato'", "'adagietto'", 
+		"'comodo'", "'lento'", "'allegro non troppo'", "'allegro agitato'", "'allegro tranquillo'", 
+		"'allegro'", "'allegro molto'", "'andante mosso'", "'andante maestoso'", 
+		"'moderato'", "'adagio'", "'tempo'", "'vivo'", "'andante'", "'play'", 
+		"'largamente'", "'allegro vivace'", "'async'", "'largo'", "NOTE", "TACTS", 
+		"NOTEKEY", "'#'", "OCTAVE", "ID", "INT", "CMDEND", "ROWCOMMENT", "BLOCKCOMMENT", 
+		"WS", "DIGIT"
 	};
 	public static final int
 		RULE_melodyDeclaration = 0, RULE_melodyBody = 1, RULE_tune = 2, RULE_command = 3, 
-		RULE_playNoteCmd = 4, RULE_goCmd = 5, RULE_playNow = 6, RULE_play = 7, 
-		RULE_async = 8, RULE_note = 9, RULE_tactLenght = 10, RULE_channel = 11;
+		RULE_playNoteCmd = 4, RULE_goCmd = 5, RULE_tempoCmd = 6, RULE_playNow = 7, 
+		RULE_play = 8, RULE_async = 9, RULE_note = 10, RULE_tactLenght = 11, RULE_channel = 12, 
+		RULE_tempoValue = 13, RULE_digitalTempo = 14;
 	public static final String[] ruleNames = {
 		"melodyDeclaration", "melodyBody", "tune", "command", "playNoteCmd", "goCmd", 
-		"playNow", "play", "async", "note", "tactLenght", "channel"
+		"tempoCmd", "playNow", "play", "async", "note", "tactLenght", "channel", 
+		"tempoValue", "digitalTempo"
 	};
 
 	@Override
@@ -75,9 +91,9 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24); match(4);
-			setState(25); match(ID);
-			setState(26); melodyBody();
+			setState(30); match(17);
+			setState(31); match(ID);
+			setState(32); melodyBody();
 			}
 		}
 		catch (RecognitionException re) {
@@ -125,32 +141,32 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(28); match(1);
-			setState(33);
+			setState(34); match(14);
+			setState(39);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 3) | (1L << 6))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 20) | (1L << 24) | (1L << 40) | (1L << 43))) != 0)) {
 				{
-				setState(31);
+				setState(37);
 				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 				case 1:
 					{
-					setState(29); command();
+					setState(35); command();
 					}
 					break;
 
 				case 2:
 					{
-					setState(30); tune();
+					setState(36); tune();
 					}
 					break;
 				}
 				}
-				setState(35);
+				setState(41);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(36); match(5);
+			setState(42); match(18);
 			}
 		}
 		catch (RecognitionException re) {
@@ -194,22 +210,22 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49);
+			setState(55);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				{
 				{
-				setState(39);
+				setState(45);
 				_la = _input.LA(1);
-				if (_la==3) {
+				if (_la==43) {
 					{
-					setState(38); playNow();
+					setState(44); playNow();
 					}
 				}
 
-				setState(41); match(2);
-				setState(42); match(ID);
-				setState(43); melodyBody();
+				setState(47); match(24);
+				setState(48); match(ID);
+				setState(49); melodyBody();
 				}
 				}
 				break;
@@ -217,10 +233,10 @@ public class JWagnerParser extends Parser {
 			case 2:
 				{
 				{
-				setState(44); playNow();
-				setState(45); match(2);
-				setState(46); match(ID);
-				setState(47); match(CMDEND);
+				setState(50); playNow();
+				setState(51); match(24);
+				setState(52); match(ID);
+				setState(53); match(CMDEND);
 				}
 				}
 				break;
@@ -243,6 +259,9 @@ public class JWagnerParser extends Parser {
 			return getRuleContext(GoCmdContext.class,0);
 		}
 		public TerminalNode CMDEND() { return getToken(JWagnerParser.CMDEND, 0); }
+		public TempoCmdContext tempoCmd() {
+			return getRuleContext(TempoCmdContext.class,0);
+		}
 		public PlayNoteCmdContext playNoteCmd() {
 			return getRuleContext(PlayNoteCmdContext.class,0);
 		}
@@ -266,22 +285,27 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53);
+			setState(60);
 			switch (_input.LA(1)) {
-			case 3:
+			case 43:
 				{
-				setState(51); playNoteCmd();
+				setState(57); playNoteCmd();
 				}
 				break;
-			case 6:
+			case 20:
 				{
-				setState(52); goCmd();
+				setState(58); goCmd();
+				}
+				break;
+			case 40:
+				{
+				setState(59); tempoCmd();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(55); match(CMDEND);
+			setState(62); match(CMDEND);
 			}
 		}
 		catch (RecognitionException re) {
@@ -329,21 +353,21 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57); play();
-			setState(58); note();
-			setState(60);
+			setState(64); play();
+			setState(65); note();
+			setState(67);
 			_la = _input.LA(1);
 			if (_la==TACTS) {
 				{
-				setState(59); tactLenght();
+				setState(66); tactLenght();
 				}
 			}
 
-			setState(63);
+			setState(70);
 			_la = _input.LA(1);
 			if (_la==INT) {
 				{
-				setState(62); channel();
+				setState(69); channel();
 				}
 			}
 
@@ -385,15 +409,54 @@ public class JWagnerParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65); match(6);
-			setState(67);
+			setState(72); match(20);
+			setState(74);
 			_la = _input.LA(1);
 			if (_la==TACTS) {
 				{
-				setState(66); tactLenght();
+				setState(73); tactLenght();
 				}
 			}
 
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TempoCmdContext extends ParserRuleContext {
+		public TempoValueContext tempoValue() {
+			return getRuleContext(TempoValueContext.class,0);
+		}
+		public TempoCmdContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_tempoCmd; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).enterTempoCmd(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).exitTempoCmd(this);
+		}
+	}
+
+	public final TempoCmdContext tempoCmd() throws RecognitionException {
+		TempoCmdContext _localctx = new TempoCmdContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_tempoCmd);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(76); match(40);
+			setState(77); tempoValue();
 			}
 		}
 		catch (RecognitionException re) {
@@ -430,17 +493,17 @@ public class JWagnerParser extends Parser {
 
 	public final PlayNowContext playNow() throws RecognitionException {
 		PlayNowContext _localctx = new PlayNowContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_playNow);
+		enterRule(_localctx, 14, RULE_playNow);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(69); play();
-			setState(71);
+			setState(79); play();
+			setState(81);
 			_la = _input.LA(1);
-			if (_la==7) {
+			if (_la==46) {
 				{
-				setState(70); async();
+				setState(80); async();
 				}
 			}
 
@@ -474,11 +537,11 @@ public class JWagnerParser extends Parser {
 
 	public final PlayContext play() throws RecognitionException {
 		PlayContext _localctx = new PlayContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_play);
+		enterRule(_localctx, 16, RULE_play);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73); match(3);
+			setState(83); match(43);
 			}
 		}
 		catch (RecognitionException re) {
@@ -509,11 +572,11 @@ public class JWagnerParser extends Parser {
 
 	public final AsyncContext async() throws RecognitionException {
 		AsyncContext _localctx = new AsyncContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_async);
+		enterRule(_localctx, 18, RULE_async);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(75); match(7);
+			setState(85); match(46);
 			}
 		}
 		catch (RecognitionException re) {
@@ -545,11 +608,11 @@ public class JWagnerParser extends Parser {
 
 	public final NoteContext note() throws RecognitionException {
 		NoteContext _localctx = new NoteContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_note);
+		enterRule(_localctx, 20, RULE_note);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(77); match(NOTE);
+			setState(87); match(NOTE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -581,11 +644,11 @@ public class JWagnerParser extends Parser {
 
 	public final TactLenghtContext tactLenght() throws RecognitionException {
 		TactLenghtContext _localctx = new TactLenghtContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_tactLenght);
+		enterRule(_localctx, 22, RULE_tactLenght);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79); match(TACTS);
+			setState(89); match(TACTS);
 			}
 		}
 		catch (RecognitionException re) {
@@ -617,11 +680,88 @@ public class JWagnerParser extends Parser {
 
 	public final ChannelContext channel() throws RecognitionException {
 		ChannelContext _localctx = new ChannelContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_channel);
+		enterRule(_localctx, 24, RULE_channel);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(81); match(INT);
+			setState(91); match(INT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TempoValueContext extends ParserRuleContext {
+		public TempoValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_tempoValue; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).enterTempoValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).exitTempoValue(this);
+		}
+	}
+
+	public final TempoValueContext tempoValue() throws RecognitionException {
+		TempoValueContext _localctx = new TempoValueContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_tempoValue);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(93);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 1) | (1L << 2) | (1L << 3) | (1L << 4) | (1L << 5) | (1L << 6) | (1L << 7) | (1L << 8) | (1L << 9) | (1L << 10) | (1L << 11) | (1L << 12) | (1L << 13) | (1L << 15) | (1L << 16) | (1L << 19) | (1L << 21) | (1L << 22) | (1L << 23) | (1L << 25) | (1L << 26) | (1L << 27) | (1L << 28) | (1L << 29) | (1L << 30) | (1L << 31) | (1L << 32) | (1L << 33) | (1L << 34) | (1L << 35) | (1L << 36) | (1L << 37) | (1L << 38) | (1L << 39) | (1L << 41) | (1L << 42) | (1L << 44) | (1L << 45) | (1L << 47))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class DigitalTempoContext extends ParserRuleContext {
+		public TerminalNode DIGIT() { return getToken(JWagnerParser.DIGIT, 0); }
+		public DigitalTempoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_digitalTempo; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).enterDigitalTempo(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JWagnerListener ) ((JWagnerListener)listener).exitDigitalTempo(this);
+		}
+	}
+
+	public final DigitalTempoContext digitalTempo() throws RecognitionException {
+		DigitalTempoContext _localctx = new DigitalTempoContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_digitalTempo);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(95); match(DIGIT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -636,26 +776,29 @@ public class JWagnerParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\2\3\24V\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t"+
-		"\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\3\2\3\2\3\2\3\2\3\3\3\3\3\3\7\3\""+
-		"\n\3\f\3\16\3%\13\3\3\3\3\3\3\4\5\4*\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\5\4\64\n\4\3\5\3\5\5\58\n\5\3\5\3\5\3\6\3\6\3\6\5\6?\n\6\3\6\5\6B\n"+
-		"\6\3\7\3\7\5\7F\n\7\3\b\3\b\5\bJ\n\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f"+
-		"\3\r\3\r\3\r\2\16\2\4\6\b\n\f\16\20\22\24\26\30\2\2R\2\32\3\2\2\2\4\36"+
-		"\3\2\2\2\6\63\3\2\2\2\b\67\3\2\2\2\n;\3\2\2\2\fC\3\2\2\2\16G\3\2\2\2\20"+
-		"K\3\2\2\2\22M\3\2\2\2\24O\3\2\2\2\26Q\3\2\2\2\30S\3\2\2\2\32\33\7\6\2"+
-		"\2\33\34\7\17\2\2\34\35\5\4\3\2\35\3\3\2\2\2\36#\7\3\2\2\37\"\5\b\5\2"+
-		" \"\5\6\4\2!\37\3\2\2\2! \3\2\2\2\"%\3\2\2\2#!\3\2\2\2#$\3\2\2\2$&\3\2"+
-		"\2\2%#\3\2\2\2&\'\7\7\2\2\'\5\3\2\2\2(*\5\16\b\2)(\3\2\2\2)*\3\2\2\2*"+
-		"+\3\2\2\2+,\7\4\2\2,-\7\17\2\2-\64\5\4\3\2./\5\16\b\2/\60\7\4\2\2\60\61"+
-		"\7\17\2\2\61\62\7\21\2\2\62\64\3\2\2\2\63)\3\2\2\2\63.\3\2\2\2\64\7\3"+
-		"\2\2\2\658\5\n\6\2\668\5\f\7\2\67\65\3\2\2\2\67\66\3\2\2\289\3\2\2\29"+
-		":\7\21\2\2:\t\3\2\2\2;<\5\20\t\2<>\5\24\13\2=?\5\26\f\2>=\3\2\2\2>?\3"+
-		"\2\2\2?A\3\2\2\2@B\5\30\r\2A@\3\2\2\2AB\3\2\2\2B\13\3\2\2\2CE\7\b\2\2"+
-		"DF\5\26\f\2ED\3\2\2\2EF\3\2\2\2F\r\3\2\2\2GI\5\20\t\2HJ\5\22\n\2IH\3\2"+
-		"\2\2IJ\3\2\2\2J\17\3\2\2\2KL\7\5\2\2L\21\3\2\2\2MN\7\t\2\2N\23\3\2\2\2"+
-		"OP\7\n\2\2P\25\3\2\2\2QR\7\13\2\2R\27\3\2\2\2ST\7\20\2\2T\31\3\2\2\2\13"+
-		"!#)\63\67>AEI";
+		"\2\3=d\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t"+
+		"\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\3"+
+		"\2\3\2\3\2\3\3\3\3\3\3\7\3(\n\3\f\3\16\3+\13\3\3\3\3\3\3\4\5\4\60\n\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4:\n\4\3\5\3\5\3\5\5\5?\n\5\3\5\3\5"+
+		"\3\6\3\6\3\6\5\6F\n\6\3\6\5\6I\n\6\3\7\3\7\5\7M\n\7\3\b\3\b\3\b\3\t\3"+
+		"\t\5\tT\n\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20"+
+		"\3\20\3\20\2\21\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36\2\3\n\3\17\21\22"+
+		"\25\25\27\31\33)+,./\61\61^\2 \3\2\2\2\4$\3\2\2\2\69\3\2\2\2\b>\3\2\2"+
+		"\2\nB\3\2\2\2\fJ\3\2\2\2\16N\3\2\2\2\20Q\3\2\2\2\22U\3\2\2\2\24W\3\2\2"+
+		"\2\26Y\3\2\2\2\30[\3\2\2\2\32]\3\2\2\2\34_\3\2\2\2\36a\3\2\2\2 !\7\23"+
+		"\2\2!\"\7\67\2\2\"#\5\4\3\2#\3\3\2\2\2$)\7\20\2\2%(\5\b\5\2&(\5\6\4\2"+
+		"\'%\3\2\2\2\'&\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*,\3\2\2\2+)\3\2"+
+		"\2\2,-\7\24\2\2-\5\3\2\2\2.\60\5\20\t\2/.\3\2\2\2/\60\3\2\2\2\60\61\3"+
+		"\2\2\2\61\62\7\32\2\2\62\63\7\67\2\2\63:\5\4\3\2\64\65\5\20\t\2\65\66"+
+		"\7\32\2\2\66\67\7\67\2\2\678\79\2\28:\3\2\2\29/\3\2\2\29\64\3\2\2\2:\7"+
+		"\3\2\2\2;?\5\n\6\2<?\5\f\7\2=?\5\16\b\2>;\3\2\2\2><\3\2\2\2>=\3\2\2\2"+
+		"?@\3\2\2\2@A\79\2\2A\t\3\2\2\2BC\5\22\n\2CE\5\26\f\2DF\5\30\r\2ED\3\2"+
+		"\2\2EF\3\2\2\2FH\3\2\2\2GI\5\32\16\2HG\3\2\2\2HI\3\2\2\2I\13\3\2\2\2J"+
+		"L\7\26\2\2KM\5\30\r\2LK\3\2\2\2LM\3\2\2\2M\r\3\2\2\2NO\7*\2\2OP\5\34\17"+
+		"\2P\17\3\2\2\2QS\5\22\n\2RT\5\24\13\2SR\3\2\2\2ST\3\2\2\2T\21\3\2\2\2"+
+		"UV\7-\2\2V\23\3\2\2\2WX\7\60\2\2X\25\3\2\2\2YZ\7\62\2\2Z\27\3\2\2\2[\\"+
+		"\7\63\2\2\\\31\3\2\2\2]^\78\2\2^\33\3\2\2\2_`\t\2\2\2`\35\3\2\2\2ab\7"+
+		"=\2\2b\37\3\2\2\2\13\')/9>EHLS";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

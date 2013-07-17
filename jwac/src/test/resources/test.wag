@@ -3,6 +3,8 @@
 */
 melody test {
 
+	tempo moderato;
+
 	play async tune firstTrack {
 		// main tune
 		play tune main {

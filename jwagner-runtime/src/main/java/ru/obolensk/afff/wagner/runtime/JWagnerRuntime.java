@@ -21,10 +21,8 @@ public class JWagnerRuntime implements AutoCloseable {
 	private Synthesizer synthesizer;
 	private MidiChannel[] channels;
 
-	private static int velosity = 60; // FIXME velosity not changed now, setted
-										// as for piano
-	private static long tactLenght = 500; // FIXME tact size not changed now,
-											// setted normal speed melody
+	private static int velosity = 60; // FIXME velosity not changed now, must be setted from instrument
+	private static long tactLenght; // FIXME tact size must valuate a smallest note part - 1/128
 
 	private int currTact = 0;
 	private LinkedList<List<MidiElement>> stack = new LinkedList<List<MidiElement>>();
@@ -38,8 +36,13 @@ public class JWagnerRuntime implements AutoCloseable {
 		synthesizer = MidiSystem.getSynthesizer();
 		synthesizer.open();
 		channels = synthesizer.getChannels();
+		setTempo(null); // setup default playing speed
 		fillStack(1); // add #0 tact element list
 		logger.debug("JWagnerRuntime created.");
+	}
+
+	public void setTempo(String tempo) {
+		tactLenght = TempoDecoder.getTactLenFromTempo(tempo);
 	}
 
 	public void playNote(String note, int length, int channel)

@@ -20,12 +20,15 @@ import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyBodyContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.MelodyDeclarationContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.PlayNoteCmdContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TactLenghtContext;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TempoCmdContext;
+import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TempoValueContext;
 import ru.obolensk.afff.wagner.jwac.grammar.JWagnerParser.TuneContext;
 import ru.obolensk.afff.wagner.jwac.il.impl.GoCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.LazyTunePlayCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PlayNoteCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PopTactCommand;
 import ru.obolensk.afff.wagner.jwac.il.impl.PushTactCommand;
+import ru.obolensk.afff.wagner.jwac.il.impl.TempoCommand;
 
 public class ILBuilder {
 
@@ -78,6 +81,11 @@ public class ILBuilder {
 					} else {
 						commandsList.add(new GoCommand());
 					}
+				} else if (cmd instanceof TempoCmdContext) {
+					TempoCmdContext tempo = (TempoCmdContext) cmd;
+					TempoValueContext tempoValueCtx = tempo.tempoValue();
+					String tempoStr = tempoValueCtx.getText();
+					commandsList.add(new TempoCommand(tempoStr));
 				}
 			} else if (currEl instanceof TuneContext) {
 				// process tune block
