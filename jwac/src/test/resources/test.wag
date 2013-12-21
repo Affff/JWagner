@@ -8,48 +8,40 @@ melody test {
 	play async tune firstTrack {
 		// main tune
 		play tune main {
-			play c6;
-			go;
-			play a5;
-			go;
-			play d6;
-			go 2;
-			play a5 2;
-			go 4;
+			play c6 /4;
+			play a5 /4;
+			play d6 /4;
+			go /4;
+			play a5 /2;
+			go /2;
 		}
-		
+
 		play tune main;
 		
 		// the ending
-		play c6 2;
-		go 2;
-		play f6 2;
-		go 2;
-		play e6 2;
-		go 2;
-		play d6 2;
-		go 2;
-	
+		play c6 /2;
+		play f6 /2;
+		play e6 /2;
+		play d6 /2;
+		
 		play tune main;
 	}
 	
 	play async tune secondTrack {
 		play tune chord1 {
-			play e3 6;
-			play c3 6;
-			play a2 6;
-			go 6;
-			play a3 2;
-			go 2;
+			~play e3 *1;
+			~play c3 *1;
+			play a2 *1;
+			go /2; //need a dot here
+			play a3 /2;
 		}
 		play tune chord1;
 		play tune chord2 {
-			play c4 6;
-			play a3 6;
-			play f2 6;
-			go 6;
-			play d4 2;
-			go 2;
+			~play c4 *1;
+			~play a3 *1;
+			play f2 *1;
+			go /2; //need a dot here
+			play d4 /2;
 		}
 		play tune chord1;
 	}

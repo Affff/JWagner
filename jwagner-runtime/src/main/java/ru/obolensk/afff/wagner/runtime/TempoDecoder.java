@@ -6,6 +6,9 @@ import java.util.Map;
 public class TempoDecoder {
 	
 	public static final String DEFAULT_TEMPO = "moderato";
+	public static final long MIN_TEMPO_HZ = 1;
+	public static final long MAX_TEMPO_HZ = 250;
+	public static final int MINIMAL_NOTE_PART = 128;
 
 	private static final Map<String, Long> TACTS_TEMPO_TABLE = new HashMap<String, Long>();
 	
@@ -52,14 +55,40 @@ public class TempoDecoder {
 	}
 
 	public static long getTactLenFromTempo(String tempoStr) {
-		Long tempo = TACTS_TEMPO_TABLE.get(tempoStr);
+		Long tempo = null;
+		try {
+			tempo = freqToTactLen(Integer.valueOf(tempoStr));
+		} catch(NumberFormatException e) {
+		}
 		if (tempo == null) {
+			tempo = TACTS_TEMPO_TABLE.get(tempoStr);
+		}
+		if (tempo == null || tempo < MIN_TEMPO_HZ || tempo > MAX_TEMPO_HZ) {
 			tempo = TACTS_TEMPO_TABLE.get(DEFAULT_TEMPO);
 		}
 		return tempo;
 	}
+	
+	/**
+	 * Method converts note length as '/2', '*2' or '2' to count of 1/128 note
+	 * tacts
+	 * 
+	 * @param noteLengthStr
+	 * @return
+	 */
+	public static int noteLenghtStrTo128PartNoteCount(String noteLengthStr) {
+		char operator = noteLengthStr.charAt(0);
+		boolean dot = noteLengthStr.charAt(noteLengthStr.length() - 1) == '.';
+		if (operator == '*' || operator == '/') {
+			noteLengthStr = noteLengthStr.substring(1, dot ? noteLengthStr.length() - 1 : noteLengthStr.length());
+		}
+		boolean divide = operator != '*';
+		int result = divide ? MINIMAL_NOTE_PART / Integer.valueOf(noteLengthStr)
+				: Integer.valueOf(noteLengthStr) * TempoDecoder.MINIMAL_NOTE_PART;
+		return dot ? result * (1 + 1/2) : result;
+	}	
 
 	private static long freqToTactLen(float freq) {
-		return StrictMath.round((60.0f / freq) * 1000.0f);
+		return StrictMath.round((60.0f / freq) * 1000.0f * (4.0f / MINIMAL_NOTE_PART));
 	}
 }

@@ -24,13 +24,15 @@ tune // procedure block
 ;
 
 command // generic commands block
- 	: (playNoteCmd
+ 	: (
+ 	    (playNoteCmd
  	   | goCmd
  	   | tempoCmd) CMDEND
+ 	  ) | emptyCmd
 ;
 
 playNoteCmd // playing single note command
- 	: play note tactLenght? channel?
+ 	: noautofwd? play note tactLenght? channel?
 ;
 
 goCmd // go forward for N or 1 (by default) tacts 
@@ -38,7 +40,11 @@ goCmd // go forward for N or 1 (by default) tacts
 ;
 
 tempoCmd // config information
- 	: 'tempo' tempoValue 
+ 	: 'tempo' tempoValue
+;
+
+emptyCmd // empty command (';')
+	: CMDEND
 ;
 
 playNow 
@@ -53,44 +59,54 @@ async
 	: 'async'
 ;
 
-note : NOTE ;
+noautofwd
+	: '~'
+;
+
+note : NOTE;
 
 NOTE
 	: NOTEKEY DIEZ? OCTAVE
 ;
 
-tactLenght : TACTS ;
+tactLenght
+	: tactLenghtPrefix? tactLenghtValue tactLenghtDot?
+;
+
+tactLenghtPrefix : '/' | '*' ;
+tactLenghtValue : INT ;
+tactLenghtDot : '.' ;
 
 channel : INT ;
 
-TACTS : INT ;
-
-NOTEKEY : LETTER ;
-DIEZ : '#' ;
-OCTAVE : DIGIT ;
+fragment NOTEKEY : LETTER ;
+fragment DIEZ : LETTER ;
+fragment OCTAVE : DIGIT ;
 
 tempoValue
 	: (
-		'grave' | 'largo' | 'largamente' | 'adagio' | 'lento' | 'lentamente' |
-		'larghetto' | 'andante assai' | 'adagietto' | 'andante' | 'andante maestoso' |
-		'andante mosso' | 'comodo' | 'comodamente' | 'andante non troppo' | 'andante con moto' |
-		'andantino' | 'moderato assai' | 'moderato' | 'con moto' | 'allegretto moderato' |
-		'allegretto' | 'allegretto mosso' | 'animato' | 'animato assai' | 'allegro moderato' |
-		'tempo di marcia' | 'allegro non troppo' | 'allegro tranquillo' | 'allegro' |
-		'allegro molto' | 'allegro assai' | 'allegro agitato' | 'allegro animato' | 
-		'allegro vivace' | 'vivo' | 'vivace' | 'presto' | 'prestissimo'
-	)
+			'grave' | 'largo' | 'largamente' | 'adagio' | 'lento' | 'lentamente' |
+			'larghetto' | 'andante assai' | 'adagietto' | 'andante' | 'andante maestoso' |
+			'andante mosso' | 'comodo' | 'comodamente' | 'andante non troppo' | 'andante con moto' |
+			'andantino' | 'moderato assai' | 'moderato' | 'con moto' | 'allegretto moderato' |
+			'allegretto' | 'allegretto mosso' | 'animato' | 'animato assai' | 'allegro moderato' |
+			'tempo di marcia' | 'allegro non troppo' | 'allegro tranquillo' | 'allegro' |
+			'allegro molto' | 'allegro assai' | 'allegro agitato' | 'allegro animato' | 
+			'allegro vivace' | 'vivo' | 'vivace' | 'presto' | 'prestissimo'
+	  )
+	  | tempoDigitValue
 ;
 
-digitalTempo : DIGIT;
+tempoDigitValue : INT ;
 
 // lexer declarations
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
 
-ID : LETTER (LETTER | DIGIT)+ ;
 INT : DIGIT+ ;
-CMDEND : [;]+ ;
+
+ID : LETTER (LETTER | DIGIT)+ ;
+CMDEND : ';' ;
 
 // comments
 ROWCOMMENT : '//' .*? [\r\n] -> skip ; // skip one row comments

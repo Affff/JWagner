@@ -58,18 +58,18 @@ public class Jwac {
 	}
 
 	private static void play(Melody melody) throws Exception {
-		try (JWagnerRuntime runtime = new JWagnerRuntime()) {
+		try (JWagnerRuntime runtime = new JWagnerRuntime(melody.getMinNotePart())) {
 			for (Command command : melody.getCommandsBlock().getCommands()) {
 				if (command instanceof TempoCommand) {
 					TempoCommand tempoCmd = (TempoCommand) command;
 					runtime.setTempo(tempoCmd.getTempo());
 				} else if (command instanceof PlayNoteCommand) {
 					PlayNoteCommand playCmd = (PlayNoteCommand) command;
-					runtime.playNote(playCmd.getNote(), playCmd.getTacts(),
+					runtime.playNote(playCmd.getNote(), playCmd.getLenghtInTacts(),
 							playCmd.getChannel());
 				} else if (command instanceof GoCommand) {
 					GoCommand goCmd = (GoCommand) command;
-					runtime.goForward(goCmd.getForwardTactsCount());
+					runtime.goForward(goCmd.getLenghtInTacts());
 				} else if (command instanceof PushTactCommand) {
 					runtime.pushTact();
 				} else if (command instanceof PopTactCommand) {

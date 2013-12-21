@@ -12,11 +12,20 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterTempoValue(JWagnerParser.TempoValueContext ctx) { }
 	@Override public void exitTempoValue(JWagnerParser.TempoValueContext ctx) { }
 
+	@Override public void enterNoautofwd(JWagnerParser.NoautofwdContext ctx) { }
+	@Override public void exitNoautofwd(JWagnerParser.NoautofwdContext ctx) { }
+
 	@Override public void enterPlay(JWagnerParser.PlayContext ctx) { }
 	@Override public void exitPlay(JWagnerParser.PlayContext ctx) { }
 
+	@Override public void enterTactLenghtPrefix(JWagnerParser.TactLenghtPrefixContext ctx) { }
+	@Override public void exitTactLenghtPrefix(JWagnerParser.TactLenghtPrefixContext ctx) { }
+
 	@Override public void enterMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
 	@Override public void exitMelodyDeclaration(JWagnerParser.MelodyDeclarationContext ctx) { }
+
+	@Override public void enterEmptyCmd(JWagnerParser.EmptyCmdContext ctx) { }
+	@Override public void exitEmptyCmd(JWagnerParser.EmptyCmdContext ctx) { }
 
 	@Override public void enterTune(JWagnerParser.TuneContext ctx) { }
 	@Override public void exitTune(JWagnerParser.TuneContext ctx) { }
@@ -27,17 +36,23 @@ public class JWagnerBaseListener implements JWagnerListener {
 	@Override public void enterAsync(JWagnerParser.AsyncContext ctx) { }
 	@Override public void exitAsync(JWagnerParser.AsyncContext ctx) { }
 
+	@Override public void enterTactLenghtDot(JWagnerParser.TactLenghtDotContext ctx) { }
+	@Override public void exitTactLenghtDot(JWagnerParser.TactLenghtDotContext ctx) { }
+
 	@Override public void enterPlayNow(JWagnerParser.PlayNowContext ctx) { }
 	@Override public void exitPlayNow(JWagnerParser.PlayNowContext ctx) { }
 
 	@Override public void enterGoCmd(JWagnerParser.GoCmdContext ctx) { }
 	@Override public void exitGoCmd(JWagnerParser.GoCmdContext ctx) { }
 
+	@Override public void enterTactLenghtValue(JWagnerParser.TactLenghtValueContext ctx) { }
+	@Override public void exitTactLenghtValue(JWagnerParser.TactLenghtValueContext ctx) { }
+
 	@Override public void enterCommand(JWagnerParser.CommandContext ctx) { }
 	@Override public void exitCommand(JWagnerParser.CommandContext ctx) { }
 
-	@Override public void enterDigitalTempo(JWagnerParser.DigitalTempoContext ctx) { }
-	@Override public void exitDigitalTempo(JWagnerParser.DigitalTempoContext ctx) { }
+	@Override public void enterTempoDigitValue(JWagnerParser.TempoDigitValueContext ctx) { }
+	@Override public void exitTempoDigitValue(JWagnerParser.TempoDigitValueContext ctx) { }
 
 	@Override public void enterMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
 	@Override public void exitMelodyBody(JWagnerParser.MelodyBodyContext ctx) { }
